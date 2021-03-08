@@ -8,10 +8,10 @@ tags:
   - intro
 ---
 
-# Overview
+## Overview
 This is personal blog power by hugo hosted on github pages
 
-# Setup procedure
+## Setup procedure
 
 Follow the steps in [Hugo - Quick Start](https://gohugo.io/getting-started/quick-start/)
 
@@ -44,7 +44,7 @@ Create a new post
 hugo new posts/my-first-post.md
 ```
 
-# How to automate?
+## How to automate?
 
 source code is committed to `main` branch
 use GitHub actions to automate the deployment to `gh-pages` branch
