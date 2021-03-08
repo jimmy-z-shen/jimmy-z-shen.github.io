@@ -13,24 +13,29 @@ This is personal blog power by hugo hosted on github pages
 
 # Setup procedure
 
+Follow the steps in [Hugo - Quick Start](https://gohugo.io/getting-started/quick-start/)
+
 On MacBook install `hugo`
 
 ```bash
 brew install hugo
 ```
 
-Create a new site
+Create a new personal blog site
 ```bash
-hugo new site [project-name]
+hugo new site zshen-blog
 ```
 
-Choose a theme
-
-we can either git clone or git submodule, since we might want to customize the theme later on, we choose to git clone
+Choose a theme, and add it as submodule
 
 ```bash
-git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
-mv themes/hello-friend-ng/exampleSite/* ./
+git submodule add https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
+```
+
+Copy the exampleSite files into git repo root folder, remove the existing posts
+
+```bash
+cp themes/hello-friend-ng/exampleSite/* ./
 rm content/posts/*
 ```
 
@@ -39,9 +44,13 @@ Create a new post
 hugo new posts/my-first-post.md
 ```
 
+# How to automate?
+
+source code is committed to `main` branch
+use GitHub actions to automate the deployment to `gh-pages` branch
+
 
 ## Reference
-- https://gohugo.io/getting-started/quick-start/
-- https://zhuanlan.zhihu.com/p/126298572
-- https://zhangfelix.medium.com/%E4%BD%BF%E7%94%A8hugo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-cbd1d57fcfbf
-- https://github.com/rhazdon/hugo-theme-hello-friend-ng
+- [HUGO - Quick Start](https://gohugo.io/getting-started/quick-start/)
+- [HUGO - Host on GitHub](https://gohugo.io/hosting-and-deployment/hosting-on-github/)
+- [GitHub - hugo-theme-hello-friend-ng](https://github.com/rhazdon/hugo-theme-hello-friend-ng)
