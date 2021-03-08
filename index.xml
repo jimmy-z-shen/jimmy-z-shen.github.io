@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jimmy's Homepage</title><link>https://jimmy-z-shen.github.io/</link><description>Recent content on Jimmy's Homepage</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 06 Mar 2021 16:27:28 -0800</lastBuildDate><atom:link href="https://jimmy-z-shen.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Personal Blog</title><link>https://jimmy-z-shen.github.io/posts/2021/03/personal-blog/</link><pubDate>Sat, 06 Mar 2021 16:27:28 -0800</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/personal-blog/</guid><description>Overview This is personal blog power by hugo hosted on github pages
+Setup procedure On MacBook install hugo
+brew install hugo Create a new site
+hugo new site [project-name] Choose a theme
+we can either git clone or git submodule, since we might want to customize the theme later on, we choose to git clone
+git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng mv themes/hello-friend-ng/exampleSite/* ./ rm content/posts/* Create a new post
+hugo new posts/my-first-post.</description></item><item><title>About</title><link>https://jimmy-z-shen.github.io/about/</link><pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate><guid>https://jimmy-z-shen.github.io/about/</guid><description>This is a personal blog powered by hugo, using hello-friend-ng theme
+The Git Repo for this blog locates at GitHub.</description></item></channel></rss>

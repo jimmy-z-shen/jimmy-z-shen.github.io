@@ -1,0 +1,28 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Jimmy's Homepage</title><link>https://jimmy-z-shen.github.io/posts/</link><description>Recent content in Posts on Jimmy's Homepage</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 06 Mar 2021 16:27:28 -0800</lastBuildDate><atom:link href="https://jimmy-z-shen.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Personal Blog</title><link>https://jimmy-z-shen.github.io/posts/2021/03/personal-blog/</link><pubDate>Sat, 06 Mar 2021 16:27:28 -0800</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/personal-blog/</guid><description>Overview This is personal blog power by hugo hosted on github pages
+Setup procedure On MacBook install hugo
+brew install hugo Create a new site
+hugo new site [project-name] Choose a theme
+we can either git clone or git submodule, since we might want to customize the theme later on, we choose to git clone
+git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng mv themes/hello-friend-ng/exampleSite/* ./ rm content/posts/* Create a new post
+hugo new posts/my-first-post.</description><content type="html"><![CDATA[<h1 id="overview">Overview</h1>
+<p>This is personal blog power by hugo hosted on github pages</p>
+<h1 id="setup-procedure">Setup procedure</h1>
+<p>On MacBook install <code>hugo</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install hugo
+</code></pre></div><p>Create a new site</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site <span style="color:#f92672">[</span>project-name<span style="color:#f92672">]</span>
+</code></pre></div><p>Choose a theme</p>
+<p>we can either git clone or git submodule, since we might want to customize the theme later on, we choose to git clone</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
+mv themes/hello-friend-ng/exampleSite/* ./
+rm content/posts/*
+</code></pre></div><p>Create a new post</p>
+<pre><code>hugo new posts/my-first-post.md
+</code></pre><h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://gohugo.io/getting-started/quick-start/">https://gohugo.io/getting-started/quick-start/</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/126298572">https://zhuanlan.zhihu.com/p/126298572</a></li>
+<li><a href="https://zhangfelix.medium.com/%E4%BD%BF%E7%94%A8hugo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-cbd1d57fcfbf">https://zhangfelix.medium.com/%E4%BD%BF%E7%94%A8hugo%E5%92%8Cgithub%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2-cbd1d57fcfbf</a></li>
+<li><a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">https://github.com/rhazdon/hugo-theme-hello-friend-ng</a></li>
+</ul>
+]]></content></item></channel></rss>
