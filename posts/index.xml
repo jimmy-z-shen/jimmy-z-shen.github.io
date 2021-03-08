@@ -1,31 +1,46 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Jimmy's Homepage</title><link>https://jimmy-z-shen.github.io/posts/</link><description>Recent content in Posts on Jimmy's Homepage</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 06 Mar 2021 16:27:28 -0800</lastBuildDate><atom:link href="https://jimmy-z-shen.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Personal Blog</title><link>https://jimmy-z-shen.github.io/posts/2021/03/personal-blog/</link><pubDate>Sat, 06 Mar 2021 16:27:28 -0800</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/personal-blog/</guid><description>Overview This is personal blog power by hugo hosted on github pages
-Setup procedure Follow the steps in Hugo - Quick Start
-On MacBook install hugo
-brew install hugo Create a new personal blog site
-hugo new site zshen-blog Choose a theme, and add it as submodule
-git submodule add https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng Copy the exampleSite files into git repo root folder, remove the existing posts
-cp themes/hello-friend-ng/exampleSite/* ./ rm content/posts/* Create a new post</description><content type="html"><![CDATA[<h2 id="overview">Overview</h2>
-<p>This is personal blog power by hugo hosted on github pages</p>
-<h2 id="setup-procedure">Setup procedure</h2>
-<p>Follow the steps in <a href="https://gohugo.io/getting-started/quick-start/">Hugo - Quick Start</a></p>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Jimmy's Homepage</title><link>https://jimmy-z-shen.github.io/posts/</link><description>Recent content in Posts on Jimmy's Homepage</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 06 Mar 2021 16:27:28 -0800</lastBuildDate><atom:link href="https://jimmy-z-shen.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Personal Blog powered by Hugo</title><link>https://jimmy-z-shen.github.io/posts/2021/03/personal-blog-powered-by-hugo/</link><pubDate>Sat, 06 Mar 2021 16:27:28 -0800</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/personal-blog-powered-by-hugo/</guid><description>Overview This personal blog is powered by hugo, build with GitHub Actions and hosted on GitHub Pages
+Setup Procedure This is overall view of what&amp;rsquo;s going to happen after the setup is all done
+Preparation Follow the steps in GitHub Pages and create a personal site repository:
+jimmy-z-shen/jimmy-z-shen.github.io On MacBook install hugo
+brew install hugo Initialize a personal blog Create a new blog site locally
+hugo new site zshen-blog Choose a theme, and add it as submodule</description><content type="html"><![CDATA[<h2 id="overview">Overview</h2>
+<p>This personal blog is powered by <code>hugo</code>, build with <code>GitHub Actions</code> and hosted on <code>GitHub Pages</code></p>
+<h2 id="setup-procedure">Setup Procedure</h2>
+<p>This is overall view of what&rsquo;s going to happen after the setup is all done</p>
+<p><img src="/img/hugo-blog.svg" alt="workflow"></p>
+<h3 id="preparation">Preparation</h3>
+<p>Follow the steps in <a href="https://pages.github.com/">GitHub Pages</a> and create a personal site repository:</p>
+<ul>
+<li><a href="https://github.com/jimmy-z-shen/jimmy-z-shen.github.io">jimmy-z-shen/jimmy-z-shen.github.io</a></li>
+</ul>
 <p>On MacBook install <code>hugo</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install hugo
-</code></pre></div><p>Create a new personal blog site</p>
+</code></pre></div><h3 id="initialize-a-personal-blog">Initialize a personal blog</h3>
+<p>Create a new blog site locally</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new site zshen-blog
 </code></pre></div><p>Choose a theme, and add it as submodule</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git submodule add https://github.com/rhazdon/hugo-theme-hello-friend-ng.git themes/hello-friend-ng
-</code></pre></div><p>Copy the exampleSite files into git repo root folder, remove the existing posts</p>
+</code></pre></div><p>Copy the <code>exampleSite</code> files into git repo root folder, remove the pre-defined posts</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp themes/hello-friend-ng/exampleSite/* ./
 rm content/posts/*
-</code></pre></div><p>Create a new post</p>
-<pre><code>hugo new posts/my-first-post.md
-</code></pre><h2 id="how-to-automate">How to automate?</h2>
-<p>source code is committed to <code>main</code> branch
-use GitHub actions to automate the deployment to <code>gh-pages</code> branch</p>
+</code></pre></div><p>Create a new post, add content to it</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">hugo new posts/hugo-blog.md
+</code></pre></div><p>Push the initial commit to the personal GitHub site repo</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git init
+git add .
+git commit -m <span style="color:#e6db74">&#34;Initial commit&#34;</span>
+git remote add origin https://github.com/jimmy-z-shen/jimmy-z-shen.github.io.git
+git push origin main
+</code></pre></div><h3 id="auto-publish-with-github-actions">Auto publish with GitHub Actions</h3>
+<p>Create a GitHub action configuration file <code>.github/workflows/gh-pages.yml</code></p>
+<p>Use the default configuration in <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/#build-hugo-with-github-action">build-hugo-with-github-action</a></p>
+<p>After we pushed this configuration file. GitHub Actions will help us generate the static site using we has been checked in to <code>main</code> branch and push to <code>gh-pages</code> branch</p>
+<p>Note: Make sure in the GitHub <a href="https://github.com/jimmy-z-shen/jimmy-z-shen.github.io/settings">repo settings</a>, it&rsquo;s set to use <code>gh-pages</code> branch as the source</p>
 <h2 id="reference">Reference</h2>
 <ul>
 <li><a href="https://gohugo.io/getting-started/quick-start/">HUGO - Quick Start</a></li>
 <li><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">HUGO - Host on GitHub</a></li>
 <li><a href="https://github.com/rhazdon/hugo-theme-hello-friend-ng">GitHub - hugo-theme-hello-friend-ng</a></li>
+<li><a href="https://www.imeetyou.net/post/2020/hugo-github-actions/">Blog - Hugo GitHub Actions</a></li>
 </ul>
 ]]></content></item></channel></rss>
