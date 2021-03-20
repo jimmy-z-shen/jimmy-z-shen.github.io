@@ -1,4 +1,243 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Jimmy's Homepage</title><link>https://jimmy-z-shen.github.io/posts/</link><description>Recent content in Posts on Jimmy's Homepage</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 06 Mar 2021 16:27:28 -0800</lastBuildDate><atom:link href="https://jimmy-z-shen.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>Personal Blog powered by Hugo</title><link>https://jimmy-z-shen.github.io/posts/2021/03/personal-blog-powered-by-hugo/</link><pubDate>Sat, 06 Mar 2021 16:27:28 -0800</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/personal-blog-powered-by-hugo/</guid><description>Overview This personal blog is powered by hugo, build with GitHub Actions and hosted on GitHub Pages
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Jimmy's Homepage</title><link>https://jimmy-z-shen.github.io/posts/</link><description>Recent content in Posts on Jimmy's Homepage</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>&lt;a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC BY-NC 4.0&lt;/a></copyright><lastBuildDate>Sat, 20 Mar 2021 12:51:26 -0700</lastBuildDate><atom:link href="https://jimmy-z-shen.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>LC743</title><link>https://jimmy-z-shen.github.io/posts/2021/03/lc743/</link><pubDate>Sat, 20 Mar 2021 12:51:26 -0700</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/lc743/</guid><description>743. Network Delay Time LC743
+Priority Queue
+class Solution: def networkDelayTime(self, times: List[List[int]], n: int, k: int) -&amp;gt; int: graph = collections.defaultdict(list) for src, dst, time in times: graph[src].append((dst, time)) if k not in graph: return -1 pq = [(k, 0)] # dst = k, time = 0 visited = {} while len(pq) &amp;gt; 0: src, time = heapq.heappop(pq) if src in visited: continue visited[src] = time for dst, add_time in graph[src]: if dst not in visited: heapq.</description><content type="html"><![CDATA[<h2 id="743-network-delay-time">743. Network Delay Time</h2>
+<p><a href="https://leetcode.com/problems/network-delay-time/">LC743</a></p>
+<p>Priority Queue</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">networkDelayTime</span>(self, times: List[List[int]], n: int, k: int) <span style="color:#f92672">-&gt;</span> int:
+
+        graph <span style="color:#f92672">=</span> collections<span style="color:#f92672">.</span>defaultdict(list)
+        <span style="color:#66d9ef">for</span> src, dst, time <span style="color:#f92672">in</span> times:
+            graph[src]<span style="color:#f92672">.</span>append((dst, time))
+            
+        <span style="color:#66d9ef">if</span> k <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> graph: <span style="color:#66d9ef">return</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+        
+        pq <span style="color:#f92672">=</span> [(k, <span style="color:#ae81ff">0</span>)] <span style="color:#75715e"># dst = k, time = 0</span>
+        
+        visited <span style="color:#f92672">=</span> {}
+        
+        <span style="color:#66d9ef">while</span> len(pq) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+            src, time <span style="color:#f92672">=</span> heapq<span style="color:#f92672">.</span>heappop(pq)
+            <span style="color:#66d9ef">if</span> src <span style="color:#f92672">in</span> visited:
+                <span style="color:#66d9ef">continue</span>
+            visited[src] <span style="color:#f92672">=</span> time
+            <span style="color:#66d9ef">for</span> dst, add_time <span style="color:#f92672">in</span> graph[src]:
+                <span style="color:#66d9ef">if</span> dst <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> visited:
+                    heapq<span style="color:#f92672">.</span>heappush(pq, (dst, time <span style="color:#f92672">+</span> add_time))
+        
+        <span style="color:#66d9ef">return</span> max(visited<span style="color:#f92672">.</span>values()) <span style="color:#66d9ef">if</span> len(visited) <span style="color:#f92672">==</span> n <span style="color:#66d9ef">else</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</code></pre></div>]]></content></item><item><title>LC1286</title><link>https://jimmy-z-shen.github.io/posts/2021/03/lc1286/</link><pubDate>Sun, 14 Mar 2021 17:21:52 -0700</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/lc1286/</guid><description>Combination / Permutation / Backtracking issue
+class CombinationIterator: def __init__(self, characters: str, combinationLength: int): self.combinations = [] def backtrack(cur: str, i: int): if len(cur) == combinationLength: self.combinations.append(cur) elif len(cur) &amp;lt; combinationLength: for j in range(i + 1, len(characters)): backtrack(cur + characters[j], j) for i in range(len(characters)): backtrack(characters[i], i) def next(self) -&amp;gt; str: return self.combinations.pop(0) def hasNext(self) -&amp;gt; bool: return len(self.combinations) &amp;gt; 0 all back tracking problems: backtracking</description><content type="html"><![CDATA[<p>Combination / Permutation / Backtracking issue</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CombinationIterator</span>:
+
+    <span style="color:#66d9ef">def</span> __init__(self, characters: str, combinationLength: int):
+        
+        self<span style="color:#f92672">.</span>combinations <span style="color:#f92672">=</span> []
+        
+        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">backtrack</span>(cur: str, i: int):
+            <span style="color:#66d9ef">if</span> len(cur) <span style="color:#f92672">==</span> combinationLength:
+                self<span style="color:#f92672">.</span>combinations<span style="color:#f92672">.</span>append(cur)
+            <span style="color:#66d9ef">elif</span> len(cur) <span style="color:#f92672">&lt;</span> combinationLength:
+                <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, len(characters)):
+                    backtrack(cur <span style="color:#f92672">+</span> characters[j], j)
+
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(characters)):
+            backtrack(characters[i], i)
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">next</span>(self) <span style="color:#f92672">-&gt;</span> str:
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>combinations<span style="color:#f92672">.</span>pop(<span style="color:#ae81ff">0</span>)
+        
+
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hasNext</span>(self) <span style="color:#f92672">-&gt;</span> bool:
+        <span style="color:#66d9ef">return</span> len(self<span style="color:#f92672">.</span>combinations) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>
+     
+</code></pre></div><p>all back tracking problems:
+<a href="https://leetcode.com/tag/backtracking/">backtracking</a></p>
+]]></content></item><item><title>LC784</title><link>https://jimmy-z-shen.github.io/posts/2021/03/lc784/</link><pubDate>Sun, 14 Mar 2021 16:36:17 -0700</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/lc784/</guid><description>class Solution: def letterCasePermutation(self, S: str) -&amp;gt; List[str]: result = [] def helper(i: int, char_list: List[str]): if i == len(S): result.append(&amp;#34;&amp;#34;.join(char_list)) return if S[i].isalpha(): char_list.append(S[i].swapcase()) helper(i + 1, char_list) char_list.pop() char_list.append(S[i]) helper(i + 1, char_list) char_list.pop() helper(0, []) return result similar question
+LC1286</description><content type="html"><![CDATA[<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">letterCasePermutation</span>(self, S: str) <span style="color:#f92672">-&gt;</span> List[str]:
+        result <span style="color:#f92672">=</span> []
+        
+        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">helper</span>(i: int, char_list: List[str]):
+            <span style="color:#66d9ef">if</span> i <span style="color:#f92672">==</span> len(S):
+                result<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">.</span>join(char_list))
+                <span style="color:#66d9ef">return</span>
+            
+            <span style="color:#66d9ef">if</span> S[i]<span style="color:#f92672">.</span>isalpha():
+                char_list<span style="color:#f92672">.</span>append(S[i]<span style="color:#f92672">.</span>swapcase())
+                helper(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, char_list)
+                char_list<span style="color:#f92672">.</span>pop()
+
+            char_list<span style="color:#f92672">.</span>append(S[i])
+            helper(i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, char_list)
+            char_list<span style="color:#f92672">.</span>pop()
+        
+        helper(<span style="color:#ae81ff">0</span>, [])
+        <span style="color:#66d9ef">return</span> result
+</code></pre></div><p>similar question</p>
+<p><a href="https://leetcode.com/problems/iterator-for-combination/">LC1286</a></p>
+]]></content></item><item><title>LC636</title><link>https://jimmy-z-shen.github.io/posts/2021/03/lc636/</link><pubDate>Sun, 14 Mar 2021 15:23:06 -0700</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/lc636/</guid><description>636. Exclusive Time of Functions LC636
+When using stack, be careful for 3 things:
+what element to store in the stack condition to push onto stack condition to pop out of stack Think of stack as a method to preserve a state for later use. Since we want to calculate the execution timing of a function. When we get a log saying a function has started, we need to preserve the state, stores [process_id] and [start_time].</description><content type="html"><![CDATA[<h2 id="636-exclusive-time-of-functions">636. Exclusive Time of Functions</h2>
+<p><a href="https://leetcode.com/problems/exclusive-time-of-functions/">LC636</a></p>
+<p>When using stack, be careful for 3 things:</p>
+<ol>
+<li>what element to store in the stack</li>
+<li>condition to push onto stack</li>
+<li>condition to pop out of stack</li>
+</ol>
+<p>Think of stack as a method to preserve a state for later use.
+Since we want to calculate the execution timing of a function.
+When we get a log saying a function has started, we need
+to preserve the state, stores [process_id] and [start_time].
+So later, we can use it to calculate the timing when there&rsquo;s an inner
+function starts or the current function ends.</p>
+<p>Here&rsquo;s the solution</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exclusiveTime</span>(self, n: int, logs: List[str]) <span style="color:#f92672">-&gt;</span> List[int]:
+        result <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> n
+        stack <span style="color:#f92672">=</span> []
+        <span style="color:#66d9ef">for</span> log <span style="color:#f92672">in</span> logs:
+            tokens <span style="color:#f92672">=</span> log<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;:&#34;</span>)
+            i, state, time <span style="color:#f92672">=</span> int(tokens[<span style="color:#ae81ff">0</span>]), tokens[<span style="color:#ae81ff">1</span>], int(tokens[<span style="color:#ae81ff">2</span>])
+            <span style="color:#66d9ef">if</span> state <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;start&#34;</span>:
+                <span style="color:#66d9ef">if</span> len(stack) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+                    result[stack[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>]] <span style="color:#f92672">+=</span> (time <span style="color:#f92672">-</span> stack[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>])
+                stack<span style="color:#f92672">.</span>append([i, time])
+            <span style="color:#66d9ef">else</span>:
+                result[i] <span style="color:#f92672">+=</span> (time <span style="color:#f92672">-</span> stack[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+                stack<span style="color:#f92672">.</span>pop()
+                <span style="color:#66d9ef">if</span> len(stack) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+                    stack[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> time <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+        <span style="color:#66d9ef">return</span> result
+</code></pre></div><h3 id="complexity">Complexity</h3>
+<ul>
+<li>number of <code>logs</code> is m</li>
+<li>Time Complexity: O(m)</li>
+<li>Space Complexity: O(m)</li>
+</ul>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://leetcode.com/problems/letter-case-permutation/discuss/255071/Java-detailed-explanation-of-DFSBacktracking-solution">discussion 1</a></li>
+<li><a href="https://leetcode.com/problems/letter-case-permutation/discuss/379928/Python-clear-solution">discussion 2</a></li>
+</ul>
+]]></content></item><item><title>LC792</title><link>https://jimmy-z-shen.github.io/posts/2021/03/lc792/</link><pubDate>Sat, 13 Mar 2021 22:17:35 -0800</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/lc792/</guid><description>792. Number of Matching Subsequences LC792
+Note: We need to be careful about what kinds of input we may get
+Given words might contains a lot of repeating words Given string s might be very long Not really focusing on any algorithm or structure.
+The idea is to:
+convert the 2D Grid into 1D array Make the shift k % (row * col) Convert 1D array back to 2D Grid class Solution: def numMatchingSubseq(self, s: str, words: List[str]) -&amp;gt; int: word_counts = Counter(words) total_count = 0 for word, count in word_counts.</description><content type="html"><![CDATA[<h2 id="792-number-of-matching-subsequences">792. Number of Matching Subsequences</h2>
+<p><a href="https://leetcode.com/problems/number-of-matching-subsequences/">LC792</a></p>
+<p>Note:
+We need to be careful about what kinds of input we may get</p>
+<ul>
+<li>Given words might contains a lot of repeating words</li>
+<li>Given string s might be very long</li>
+</ul>
+<p>Not really focusing on any algorithm or structure.</p>
+<p>The idea is to:</p>
+<ol>
+<li>convert the 2D Grid into 1D array</li>
+<li>Make the shift k % (row * col)</li>
+<li>Convert 1D array back to 2D Grid</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">numMatchingSubseq</span>(self, s: str, words: List[str]) <span style="color:#f92672">-&gt;</span> int:
+        word_counts <span style="color:#f92672">=</span> Counter(words)
+        total_count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+        <span style="color:#66d9ef">for</span> word, count <span style="color:#f92672">in</span> word_counts<span style="color:#f92672">.</span>items():
+            i, match <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>, True
+            <span style="color:#66d9ef">if</span> len(word) <span style="color:#f92672">&gt;</span> len(s):
+                <span style="color:#75715e"># not a subsequence</span>
+                <span style="color:#66d9ef">continue</span>
+            <span style="color:#66d9ef">for</span> letter <span style="color:#f92672">in</span> word:
+                <span style="color:#75715e"># if doesn&#39;t find, return -1</span>
+                i <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>find(letter, i) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+                <span style="color:#66d9ef">if</span> i <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+                    match <span style="color:#f92672">=</span> False
+                    <span style="color:#66d9ef">break</span>
+            <span style="color:#66d9ef">if</span> match:
+                total_count <span style="color:#f92672">+=</span> count
+        <span style="color:#66d9ef">return</span> total_count
+</code></pre></div><h3 id="complexity">Complexity</h3>
+<ul>
+<li>length of <code>s</code> is n</li>
+<li>number of <code>words</code> is m</li>
+<li>length of longest <code>word</code> is k</li>
+</ul>
+<p>Note: In python <code>len()</code> function has O(1) time complexity</p>
+<ul>
+<li>Time Complexity: O(m * k * n)</li>
+<li>Space Complexity: O(m)</li>
+</ul>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://leetcode.com/problems/number-of-matching-subsequences/discuss/1103585/PythonPython3-Number-of-Matching-Subsequences">discussion 1</a></li>
+<li><a href="https://leetcode.com/problems/number-of-matching-subsequences/discuss/802857/Clean-Python-or-100-Speed-or-Commented-or-2-Algorithms">discussion 2</a></li>
+</ul>
+]]></content></item><item><title>Python Tips</title><link>https://jimmy-z-shen.github.io/posts/2021/03/python-tips/</link><pubDate>Sat, 13 Mar 2021 14:48:33 -0800</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/python-tips/</guid><description>Overview Tip 1: be explicit when checking: None, [], 0 not var return True for various different cases.
+&amp;gt;&amp;gt;&amp;gt; var = None &amp;gt;&amp;gt;&amp;gt; not var True &amp;gt;&amp;gt;&amp;gt; var = 0 &amp;gt;&amp;gt;&amp;gt; not var True &amp;gt;&amp;gt;&amp;gt; var = [] &amp;gt;&amp;gt;&amp;gt; not var True So when you are writing if else condition, instead of
+if not var: it&amp;rsquo;s better to be explicit
+if var != None: if len(var) == 0: if var !</description><content type="html"><![CDATA[<h2 id="overview">Overview</h2>
+<h3 id="tip-1-be-explicit-when-checking-none--0">Tip 1: be explicit when checking: None, [], 0</h3>
+<p><code>not var</code> return <code>True</code> for various different cases.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;&gt;</span> var <span style="color:#f92672">=</span> None
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">not</span> var
+True
+<span style="color:#f92672">&gt;&gt;&gt;</span> var <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">not</span> var
+True
+<span style="color:#f92672">&gt;&gt;&gt;</span> var <span style="color:#f92672">=</span> []
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">not</span> var
+True
+</code></pre></div><p>So when you are writing if else condition, instead of</p>
+<pre><code>if not var:
+</code></pre><p>it&rsquo;s better to be explicit</p>
+<pre><code>if var != None:
+if len(var) == 0:
+if var != 0:
+</code></pre><h3 id="tip-1-sorted-function-with-lambda-key">Tip 1: sorted function with lambda key</h3>
+<p><code>sorted</code> function</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">sorted(iterable, key<span style="color:#f92672">=</span>None)
+</code></pre></div><p><code>lambda</code> function</p>
+<p>A lambda function is a small anonymous function.</p>
+<p>A lambda function can take any number of arguments, but can only have one expression.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">lambda</span> arguments : expression
+</code></pre></div><p>Examples:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Example 1: sort by attribute</span>
+sorted(students, key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> student: student<span style="color:#f92672">.</span>age)
+<span style="color:#75715e"># Example 2: sort by tuple(count, num), first sort with count, then sort with num</span>
+counter <span style="color:#f92672">=</span> Counter(arr)
+sorted(arr, key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> num: (c[num], num) )
+</code></pre></div>]]></content></item><item><title>Tree Problem</title><link>https://jimmy-z-shen.github.io/posts/2021/03/tree-problem/</link><pubDate>Sat, 13 Mar 2021 11:40:31 -0800</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/tree-problem/</guid><description>Overview For tree problem There&amp;rsquo;s following important terms
+Node Root - The node at the top of the tree Parent - Any node except the root node has Child Siblings Leaf Subtree Visiting Traversing Levels Key
+Type of Trees
+Binary Tree Binary Search Tree Leetcode Problems Leetcode 1305</description><content type="html"><![CDATA[<h2 id="overview">Overview</h2>
+<p>For tree problem
+There&rsquo;s following important terms</p>
+<p>Node
+Root - The node at the top of the tree
+Parent - Any node except the root node has
+Child
+Siblings
+Leaf
+Subtree
+Visiting
+Traversing
+Levels
+Key</p>
+<p>Type of Trees</p>
+<ul>
+<li>Binary Tree</li>
+<li>Binary Search Tree</li>
+<li></li>
+</ul>
+<h2 id="leetcode-problems">Leetcode Problems</h2>
+<ul>
+<li>Leetcode 1305</li>
+<li></li>
+</ul>
+]]></content></item><item><title>Personal Blog powered by Hugo</title><link>https://jimmy-z-shen.github.io/posts/2021/03/personal-blog-powered-by-hugo/</link><pubDate>Sat, 06 Mar 2021 16:27:28 -0800</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/personal-blog-powered-by-hugo/</guid><description>Overview This personal blog is powered by hugo, build with GitHub Actions and hosted on GitHub Pages
 Setup Procedure This is overall view of what&amp;rsquo;s going to happen after the setup is all done
 Preparation Follow the steps in GitHub Pages and create a personal site repository:
 jimmy-z-shen/jimmy-z-shen.github.io On MacBook install hugo
