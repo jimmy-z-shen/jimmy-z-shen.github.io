@@ -1,7 +1,7 @@
 ---
 title: "Tree Problem"
 date: 2021-03-13T11:40:31-08:00
-draft: true
+draft: false
 toc: false
 images:
 tags:

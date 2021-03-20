@@ -1,7 +1,7 @@
 ---
 title: "Python Tips"
 date: 2021-03-13T14:48:33-08:00
-draft: true
+draft: false
 toc: true
 images:
 tags:
