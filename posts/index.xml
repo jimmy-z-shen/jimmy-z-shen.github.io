@@ -209,6 +209,31 @@ sorted(students, key<span style="color:#f92672">=</span><span style="color:#66d9
 <span style="color:#75715e"># Example 2: sort by tuple(count, num), first sort with count, then sort with num</span>
 counter <span style="color:#f92672">=</span> Counter(arr)
 sorted(arr, key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> num: (c[num], num) )
+</code></pre></div>]]></content></item><item><title>LC1260</title><link>https://jimmy-z-shen.github.io/posts/2021/03/lc1260/</link><pubDate>Sat, 13 Mar 2021 12:08:10 -0800</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/lc1260/</guid><description>1260. Shift 2D Grid LC1260
+Not really focusing on any algorithm or structure.
+The idea is to:
+convert the 2D Grid into 1D array Make the shift k % (row * col) Convert 1D array back to 2D Grid class Solution: def shiftGrid(self, grid: List[List[int]], k: int) -&amp;gt; List[List[int]]: row = len(grid) col = len(grid[0]) k = k % (row * col) arr = [] for each_row in grid: arr.</description><content type="html"><![CDATA[<h2 id="1260-shift-2d-grid">1260. Shift 2D Grid</h2>
+<p><a href="https://leetcode.com/problems/shift-2d-grid/">LC1260</a></p>
+<p>Not really focusing on any algorithm or structure.</p>
+<p>The idea is to:</p>
+<ol>
+<li>convert the 2D Grid into 1D array</li>
+<li>Make the shift k % (row * col)</li>
+<li>Convert 1D array back to 2D Grid</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span>:
+    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">shiftGrid</span>(self, grid: List[List[int]], k: int) <span style="color:#f92672">-&gt;</span> List[List[int]]:
+        row <span style="color:#f92672">=</span> len(grid)
+        col <span style="color:#f92672">=</span> len(grid[<span style="color:#ae81ff">0</span>])
+        k <span style="color:#f92672">=</span> k <span style="color:#f92672">%</span> (row <span style="color:#f92672">*</span> col)
+        arr <span style="color:#f92672">=</span> []
+        <span style="color:#66d9ef">for</span> each_row <span style="color:#f92672">in</span> grid:
+            arr<span style="color:#f92672">.</span>extend(each_row)
+        arr <span style="color:#f92672">=</span> arr[<span style="color:#f92672">-</span>k:] <span style="color:#f92672">+</span> arr[:<span style="color:#f92672">-</span>k]
+        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(row):
+            <span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(col):
+                grid[i][j] <span style="color:#f92672">=</span> arr[i <span style="color:#f92672">*</span> col <span style="color:#f92672">+</span> j]
+        <span style="color:#66d9ef">return</span> grid
 </code></pre></div>]]></content></item><item><title>Tree Problem</title><link>https://jimmy-z-shen.github.io/posts/2021/03/tree-problem/</link><pubDate>Sat, 13 Mar 2021 11:40:31 -0800</pubDate><guid>https://jimmy-z-shen.github.io/posts/2021/03/tree-problem/</guid><description>Overview For tree problem There&amp;rsquo;s following important terms
 Node Root - The node at the top of the tree Parent - Any node except the root node has Child Siblings Leaf Subtree Visiting Traversing Levels Key
 Type of Trees
